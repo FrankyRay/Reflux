@@ -11,6 +11,7 @@ import {
 } from "$lib/store/status.svelte";
 import { ytdlpVersion } from "$lib/store/status.svelte";
 import { invoke } from "@tauri-apps/api/core";
+
 export const prerender = true;
 export const ssr = false;
 

@@ -1,4 +1,3 @@
-import { once } from "@tauri-apps/api/event";
 import { downloadDir } from "@tauri-apps/api/path";
 import { LazyStore } from "@tauri-apps/plugin-store";
 

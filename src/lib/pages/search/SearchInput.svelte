@@ -10,6 +10,7 @@
   } from "$lib/store/status.svelte";
   import { setDownloadOption } from "$lib/store/download.svelte";
   import { setting } from "$lib/store/settings.svelte";
+  import { fastDownloadVideo } from "$lib/utils/download";
 
   import Button from "$lib/components/Button.svelte";
   import ButtonDropdown from "$lib/components/ButtonDropdown.svelte";
@@ -50,13 +51,6 @@
     }
   }
 
-  async function downloadVideo() {
-    await invoke("execute_video_download", {
-      args: ["--format-sort", "res,ext"],
-      videoLink,
-    });
-  }
-
   async function pasteFromClipboard() {
     videoLink = await readText();
   }
@@ -83,7 +77,11 @@
     <div id="btn-left-con">
       <Button name="Paste" onclick={pasteFromClipboard} Icon={Clipboard} />
       <Button name="Configure" onclick={configureVideo} Icon={Config} />
-      <Button name="Download" onclick={downloadVideo} Icon={Download} />
+      <Button
+        name="Download"
+        onclick={() => fastDownloadVideo(videoLink)}
+        Icon={Download}
+      />
     </div>
   </div>
 </div>
