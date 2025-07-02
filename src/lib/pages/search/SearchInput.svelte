@@ -50,6 +50,13 @@
     }
   }
 
+  async function downloadVideo() {
+    await invoke("execute_video_download", {
+      args: ["--format-sort", "res,ext"],
+      videoLink,
+    });
+  }
+
   async function pasteFromClipboard() {
     videoLink = await readText();
   }
@@ -76,7 +83,7 @@
     <div id="btn-left-con">
       <Button name="Paste" onclick={pasteFromClipboard} Icon={Clipboard} />
       <Button name="Configure" onclick={configureVideo} Icon={Config} />
-      <ButtonDropdown name="Download" onclick={() => {}} Icon={Download} />
+      <Button name="Download" onclick={downloadVideo} Icon={Download} />
     </div>
   </div>
 </div>
